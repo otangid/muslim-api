@@ -1,24 +1,16 @@
 {
-  "name": "muslim-api",
+  "name": "otang.id",
   "version": "1.0.0",
-  "description": "Quran, Doa, Dzikir, Hadits Api",
   "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "start": "node --env-file=.env ./bin/www",
-    "devstart": "DEBUG=dikiotang:* nodemon --env-file=.env ./bin/www"
-  },
-  "dependencies": {
-    "body-parser": "^1.20.3",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "ejs": "^3.1.10",
-    "express": "^4.21.1",
-    "express-ejs-layouts": "^2.5.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "sqlite3": "^5.1.7"
+    "dev": "concurrently \"npm run dev --workspace=frontend\" \"npm run dev --workspace=backend\"",
+    "build": "npm run build --workspace=frontend && npm run build --workspace=backend"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "concurrently": "^9.2.1"
   }
 }
