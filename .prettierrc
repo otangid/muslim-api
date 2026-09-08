@@ -1,0 +1,5 @@
+{
+  "printWidth": 120,
+  "singleAttributePerLine": true,
+  "jsxBracketSameLine": false
+}
