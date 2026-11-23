@@ -1,6 +1,6 @@
-import db from "@/config/alquran.database";
 import { badRequest, notFound, success, withErrorHandler } from "@/lib/response";
 import { Hadits } from "@/types/muslim";
+import data from "@data/hadits.json";
 
 type Context = {
   params: Promise<{ keyword: string }>;
@@ -11,9 +11,7 @@ export const GET = withErrorHandler(async (_request: Request, context: Context) 
   if (keyword.trim().length <= 3) {
     return badRequest("Keyword harus lebih dari 3 karakter");
   }
-  const hadits: Hadits[] = db
-    .prepare("SELECT * FROM hadits WHERE judul LIKE ? ORDER BY CAST(no AS INTEGER) ASC")
-    .all(`%${keyword}%`) as Hadits[];
+  const hadits = data.filter((h) => h.judul.toLowerCase().includes(keyword.toLowerCase())) as Hadits[];
   if (!hadits || hadits.length === 0) {
     return notFound("Hadits tidak ditemukan");
   }

@@ -1,6 +1,6 @@
-import db from "@/config/alquran.database";
 import { badRequest, notFound, success, withErrorHandler } from "@/lib/response";
 import { Doa } from "@/types/muslim";
+import data from "@data/doa.json";
 
 type Context = {
   params: Promise<{ keyword: string }>;
@@ -11,7 +11,8 @@ export const GET = withErrorHandler(async (_request: Request, context: Context) 
   if (keyword.trim().length <= 3) {
     return badRequest("Keyword harus lebih dari 3 karakter");
   }
-  const doa: Doa[] = db.prepare("SELECT * FROM doa WHERE judul LIKE ? ORDER BY judul ASC").all(`%${keyword}%`) as Doa[];
+  const base = data as Doa[];
+  const doa = base.filter((d) => d.judul.toLowerCase().includes(keyword.toLowerCase()));
   if (!doa || doa.length === 0) {
     return notFound("Doa tidak ditemukan");
   }

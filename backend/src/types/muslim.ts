@@ -1,28 +1,28 @@
 export interface Asbab {
-  id: string;
-  ayah: string;
+  id: number;
+  ayah: number;
   text: string;
 }
 
 export interface Asma {
-  id: string;
+  id: number;
   arab: string;
   latin: string;
   indo: string;
 }
 
 export interface Ayah {
-  id: string;
-  surah: string;
-  ayah: string;
+  id: number;
+  surah: number;
+  ayah: number;
   arab: string;
   latin: string;
-  page: string;
-  juz: string;
-  hizb: string;
-  asbab: string;
+  page: number;
+  juz: number;
+  hizb: number;
+  asbab: number;
   audio: string;
-  theme: string;
+  theme: number;
   text: string;
   notes: string;
 }
@@ -35,6 +35,7 @@ export interface Doa {
 }
 
 export interface Dzikir {
+  id: number;
   type: string;
   arab: string;
   indo: string;
@@ -42,32 +43,32 @@ export interface Dzikir {
 }
 
 export interface Hadits {
-  no: string;
+  no: number;
   judul: string;
   arab: string;
   indo: string;
 }
 
 export interface Juz {
-  number: string;
+  number: number;
   name: string;
   name_start_arab: string;
   name_end_arab: string;
   name_start_id: string;
   name_end_id: string;
-  verse_start: string;
-  verse_end: string;
-  surah_id_start: string;
-  surah_id_end: string;
+  verse_start: number;
+  verse_end: number;
+  surah_id_start: number;
+  surah_id_end: number;
   ayat_arab: string;
   ayat_latin: string;
   ayat_indo: string;
 }
 
 export interface Surah {
-  number: string;
-  sequence: string;
-  number_of_verses: string;
+  number: number;
+  sequence: number;
+  number_of_verses: number;
   name_short: string;
   name_long: string;
   name_en: string;
@@ -82,22 +83,21 @@ export interface Surah {
 }
 
 export interface Tafsir {
-  id: string;
-  ayah: string;
+  id: number;
+  ayah: number;
   wajiz: string;
   tahlili: string;
 }
 
 export interface Theme {
-  id: string;
+  id: number;
   name: string;
 }
 
 export interface Word {
-  id: string;
-  surah: string;
-  ayah: string;
-  word: string;
+  surah: number;
+  ayah: number;
+  word: number;
   arab: string;
   indo: string;
 }

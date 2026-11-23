@@ -1,6 +1,6 @@
-import db from "@/config/alquran.database";
 import { notFound, success, withErrorHandler } from "@/lib/response";
 import { Doa } from "@/types/muslim";
+import data from "@data/doa.json";
 
 type Context = {
   params: Promise<{ source: string }>;
@@ -8,7 +8,8 @@ type Context = {
 
 export const GET = withErrorHandler(async (_request: Request, context: Context) => {
   const { source } = await context.params;
-  const doa: Doa[] = db.prepare("SELECT * FROM doa WHERE source = ? ORDER BY judul ASC").all(source) as Doa[];
+  const base = data as Doa[];
+  const doa = base.filter((d) => d.source === source);
   if (!doa || doa.length === 0) {
     return notFound("Doa tidak ditemukan");
   }
