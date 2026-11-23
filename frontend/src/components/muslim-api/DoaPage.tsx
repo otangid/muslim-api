@@ -70,7 +70,7 @@ export default function DoaPage() {
           title="Daftar Doa-doa harian"
           method="GET"
           path="/muslim/v1/doa"
-          size="-+ 76 KB"
+          size="-+ 80.5 KB"
           params={[]}
           exampleRequest="https://api.otang.id/muslim/v1/doa"
           exampleResponse={`

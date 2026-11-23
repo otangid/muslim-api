@@ -70,7 +70,7 @@ export default function DzikirPage() {
           title="Daftar Dzikir-dzikir harian"
           method="GET"
           path="/muslim/v1/dzikir"
-          size="-+ 40 KB"
+          size="-+ 44.1 KB"
           params={[]}
           exampleRequest="https://api.otang.id/muslim/v1/dzikir"
           exampleResponse={`
@@ -79,7 +79,7 @@ export default function DzikirPage() {
   "message": "Sukses",
   "data": [
     {
-      "id": "1",
+      "id": 1,
       "type": "pagi",
       "arab": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
       "indo": "Aku berlindung kepada Allah dari godaan syaitan yang terkutuk.",
@@ -109,7 +109,7 @@ export default function DzikirPage() {
   "message": "Sukses",
   "data": [
     {
-      "id": "1",
+      "id": 1,
       "type": "pagi",
       "arab": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
       "indo": "Aku berlindung kepada Allah dari godaan syaitan yang terkutuk.",
