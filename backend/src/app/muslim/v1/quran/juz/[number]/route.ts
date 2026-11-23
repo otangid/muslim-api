@@ -1,6 +1,6 @@
-import db from "@/config/alquran.database";
 import { notFound, success, withErrorHandler } from "@/lib/response";
 import { Juz } from "@/types/muslim";
+import data from "@data/juz.json";
 
 type Context = {
   params: Promise<{ number: string }>;
@@ -8,7 +8,10 @@ type Context = {
 
 export const GET = withErrorHandler(async (_request: Request, context: Context) => {
   const { number } = await context.params;
-  const juz: Juz = db.prepare("SELECT * FROM juz WHERE number = ?").get(number) as Juz;
+  if (!Number.isInteger(Number(number))) {
+    return notFound("Nomor juz tidak valid");
+  }
+  const juz = data.find((j) => j.number === Number(number)) as Juz;
   if (!juz) {
     return notFound("Juz tidak ditemukan");
   }

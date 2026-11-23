@@ -1,6 +1,6 @@
-import db from "@/config/alquran.database";
 import { notFound, success, withErrorHandler } from "@/lib/response";
 import { Ayah } from "@/types/muslim";
+import data from "@data/ayah.json";
 
 type Context = {
   params: Promise<{ surah: string }>;
@@ -8,9 +8,10 @@ type Context = {
 
 export const GET = withErrorHandler(async (_request: Request, context: Context) => {
   const { surah } = await context.params;
-  const ayah: Ayah[] = db
-    .prepare("SELECT * FROM ayah WHERE surah = ? ORDER BY CAST(id as INTEGER) ASC")
-    .all(surah) as Ayah[];
+  if (!Number.isInteger(Number(surah))) {
+    return notFound("Nomor surah tidak valid");
+  }
+  const ayah = data.filter((a) => a.surah === Number(surah)) as Ayah[];
   if (!ayah || ayah.length === 0) {
     return notFound("Ayah tidak ditemukan");
   }

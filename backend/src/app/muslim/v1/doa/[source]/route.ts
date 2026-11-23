@@ -8,8 +8,7 @@ type Context = {
 
 export const GET = withErrorHandler(async (_request: Request, context: Context) => {
   const { source } = await context.params;
-  const base = data as Doa[];
-  const doa = base.filter((d) => d.source === source);
+  const doa = data.filter((d) => d.source === source) as Doa[];
   if (!doa || doa.length === 0) {
     return notFound("Doa tidak ditemukan");
   }

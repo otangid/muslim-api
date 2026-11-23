@@ -9,10 +9,9 @@ type Context = {
 export const GET = withErrorHandler(async (_request: Request, context: Context) => {
   const { keyword } = await context.params;
   if (keyword.trim().length <= 3) {
-    return badRequest("Keyword harus lebih dari 3 karakter");
+    return badRequest("Kata kunci harus lebih dari 3 karakter");
   }
-  const base = data as Doa[];
-  const doa = base.filter((d) => d.judul.toLowerCase().includes(keyword.toLowerCase()));
+  const doa = data.filter((d) => d.judul.toLowerCase().includes(keyword.toLowerCase())) as Doa[];
   if (!doa || doa.length === 0) {
     return notFound("Doa tidak ditemukan");
   }

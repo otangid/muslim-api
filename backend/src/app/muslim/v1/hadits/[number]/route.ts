@@ -9,7 +9,7 @@ type Context = {
 export const GET = withErrorHandler(async (_request: Request, context: Context) => {
   const { number } = await context.params;
   if (!Number.isInteger(Number(number))) {
-    return notFound("ID tidak valid");
+    return notFound("Nomor hadits tidak valid");
   }
   const hadits: Hadits = data.find((h) => h.no === Number(number)) as Hadits;
   if (!hadits) {

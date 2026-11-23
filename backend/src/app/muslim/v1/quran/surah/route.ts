@@ -1,9 +1,9 @@
-import db from "@/config/alquran.database";
 import { notFound, success, withErrorHandler } from "@/lib/response";
 import { Surah } from "@/types/muslim";
+import data from "@data/surah.json";
 
 export const GET = withErrorHandler(async () => {
-  const surah: Surah[] = db.prepare("SELECT * FROM surah ORDER BY CAST(number AS INTEGER) ASC").all() as Surah[];
+  const surah = data as Surah[];
   if (!surah || surah.length === 0) {
     return notFound("Surah tidak ditemukan");
   }
